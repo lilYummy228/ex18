@@ -10,35 +10,34 @@ namespace ex18
     {
         static void Main(string[] args)
         {
-            int[,] twoDimensionalArray =
-            {
-                {2, 9, 8, 12},
-                {3, 1, 4, 5}, //=13
-                {7, 10, 6, 11 }
-              //=42
-            };
-            int secondLine = 1;
-            int firstColumn = 0;
-            int sumOfSecondLine = 0;
-            int multiplicationOfFirstColumn = 1;
+            int[,] array = { { 2, 9, 8, 12 }, { 3, 1, 4, 5 }, { 7, 10, 6, 11 } };
+            int numberOfLine = 1;
+            int numberOfColumn = 0;
+            int sumLineNumbers = 0;
+            int multiplicationColumnNumbers = 1;
 
-            for (int line = 0; line < twoDimensionalArray.GetLength(0); line++)
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                for (int column = 0; column < twoDimensionalArray.GetLength(1); column++)
+                for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    if (column == firstColumn)
-                    {
-                        multiplicationOfFirstColumn *= twoDimensionalArray[line, column];
-                    }
-
-                    if (line == secondLine)
-                    {
-                        sumOfSecondLine += twoDimensionalArray[line, column];
-                    }
+                    Console.Write($"{array[i, j]}|");
                 }
+
+                Console.WriteLine();
             }
 
-            Console.WriteLine($"Сумма второй строки равна: {sumOfSecondLine}\nПроизведение первого столбца равно: {multiplicationOfFirstColumn}");
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                multiplicationColumnNumbers *= array[i, numberOfColumn];
+            }
+
+            for (int j = 0; j < array.GetLength(1); j++)
+            {
+                sumLineNumbers += array[numberOfLine, j];
+            }
+
+            Console.WriteLine($"Сумма {numberOfLine + 1} строки равна: {sumLineNumbers}\n" +
+                $"Произведение {numberOfColumn + 1} столбца равно: {multiplicationColumnNumbers}");
         }
     }
 }
